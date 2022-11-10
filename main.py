@@ -32,4 +32,30 @@ async def davinci(
     presence_penalty = 0
   )
   await ctx.send(f'```{response}```')
+
+@bot.slash_command(description='Get Bitcoin wallet address information')
+async def btcaddress(interaction: Interaction, address: str):
+  api = requests.get(f'https://chain.api.btc.com/v3/address/{address}')
+  data = api.json()
+  inc = data['received']
+  outc = data['sent']
+  bal = data['balance']
+  tx = data['tx_count']
+  embd = discord.Embed(title=f'Bitcoin address lookup: {address}',description=f'Balance: {bal} \nAmount received: {inc} \nAmount spent: {outc} \nTx count: {tx}')
+  embd.set_footer(text='不劳而获的收获')
+  await interaction.send(embed=embd)
+
+@bot.slash_command(description='Get Bitcoin transfer information')
+async def btctransac(interaction: Interaction, TransactionID: str):
+  api = requests.get(f'https://chain.api.btc.com/v3/tx/{TransactionID}')
+  data = api.json()
+  hash = data['hash']
+  creationTime = data['created_at'] 
+  confirm = data['confirmations']
+  blockh = data['block_height']
+  blockt = data['block_time']
+  embd = discord.Embed(title=f'Bitcoin transaction lookup:{TransactionID}',description =f'Creation Time: {creationTime} \nConfirmations: {confirm} \nBlock Height: {blockh} \n Block Time {blockt}')
+  embd.set_footer(text=f'{hash} \n不劳而获的收获')
+  await interaction.send(embed=embd)
+  
 bot.run('')
