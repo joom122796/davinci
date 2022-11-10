@@ -31,3 +31,4 @@ async def davinci(
     presence_penalty = 0
   )
   await ctx.send(f'```{response}```')
+bot.run('')
