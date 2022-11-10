@@ -40,8 +40,7 @@ async def btcaddress(interaction: Interaction, address: str):
   inc = data['received']
   outc = data['sent']
   bal = data['balance']
-  tx = data['tx_count']
-  embd = discord.Embed(title=f'Bitcoin address lookup: {address}',description=f'Balance: {bal} \nAmount received: {inc} \nAmount spent: {outc} \nTx count: {tx}')
+  embd = discord.Embed(title=f'Bitcoin address lookup: {address}',description=f'Balance: {bal} \nAmount received: {inc} \nAmount spent: {outc}')
   embd.set_footer(text='不劳而获的收获')
   await interaction.send(embed=embd)
 
@@ -52,9 +51,7 @@ async def btctransac(interaction: Interaction, TransactionID: str):
   hash = data['hash']
   creationTime = data['created_at'] 
   confirm = data['confirmations']
-  blockh = data['block_height']
-  blockt = data['block_time']
-  embd = discord.Embed(title=f'Bitcoin transaction lookup:{TransactionID}',description =f'Creation Time: {creationTime} \nConfirmations: {confirm} \nBlock Height: {blockh} \n Block Time {blockt}')
+  embd = discord.Embed(title=f'Bitcoin transaction lookup:{TransactionID}',description =f'Creation Time: {creationTime} \nConfirmations: {confirm}')
   embd.set_footer(text=f'{hash} \n不劳而获的收获')
   await interaction.send(embed=embd)
   
