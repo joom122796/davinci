@@ -14,6 +14,7 @@ bot = commands.Bot(intents=intents)
 async def on_ready():
   print('Online')
   await bot.change_presence(status=discord.Status.dnd)
+  
 @bot.slash_command(description='Use Davinci to transform natural language into code.')
 async def davinci(
   ctx,
