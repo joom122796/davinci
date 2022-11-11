@@ -19,7 +19,7 @@ async def on_ready():
 async def davinci(interaction: Interaction, lang: str, task: str):
   openai.api_key = ("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")
   response = openai.Completion.create(
-    model='text-davinci-002',
+    model='code-davinci-002',
     prompt = f'{lang} \n{task}',
     temperature = 0.7,
     max_tokens = 1000,
