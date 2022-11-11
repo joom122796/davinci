@@ -27,6 +27,12 @@ async def davinci(interaction: Interaction, lang: str, task: str):
     frequency_penalty = 0,
     presence_penalty = 0
   )
-  await interaction.respond(f'```{response["choices"][0]}```')
+  if {len(response["choices"][0])} > 2000:
+    with open('response.txt', 'w') as f:
+      f.write(f'{response["choices"][0]}')
+    with open('response.txt', 'rb') as file:
+      await interaction.respond(file=discord.File(file, 'response.txt'))
+  else:
+    await interaction.respond(f'```{response["choices"][0]}```')
 
 bot.run('MTA0MDM3NDE2NzU3MDIzOTUwOA.G30w6M.z05rxA2pUD3StbfkjYDTs6gEO-iSd-Yu6B8F3s')
