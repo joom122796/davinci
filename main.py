@@ -22,7 +22,7 @@ async def davinci(interaction: Interaction, lang: str, task: str):
     model='code-davinci-002',
     prompt = f'{lang} {task}',
     temperature = 0.7,
-    max_tokens = 1000,
+    max_tokens = 8000,
     top_p = 1,
     frequency_penalty = 0,
     presence_penalty = 0
