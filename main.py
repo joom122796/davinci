@@ -21,7 +21,7 @@ async def davinci(
   lang: discord.Option(str, choices=['py','js','go','rb','cs','pl','swift','sql','shell','typeshift'], required=True),
   task: discord.Option(str, required=True)
 ):
-  openai.api_key = ("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")
+  openai.api_key = ("")
   response = openai.Completion.create(
     model='code-davinci-002',
     prompt = f'{lang} {task}',
@@ -50,4 +50,4 @@ async def support(interaction: Interaction):
   embd.set_footer(text='不劳而获的收获')
   await interaction.send(embed=embd)
     
-bot.run('MTA0MDM3NDE2NzU3MDIzOTUwOA.G30w6M.z05rxA2pUD3StbfkjYDTs6gEO-iSd-Yu6B8F3s')
+bot.run('')
